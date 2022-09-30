@@ -1,0 +1,26 @@
+.nav-wrapper {
+  padding: 0 20px;
+  background-color: #472743;
+}
+.price {
+  font-size: 1.5rem;
+}
+.course {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-primary {
+  background-color: #472743;
+}
+.btn-primary:hover {
+  background-color: #71426b;
+}
