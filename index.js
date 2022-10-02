@@ -5,6 +5,7 @@ const aboutRoutes = require('./routes/about');
 const addRoutes = require('./routes/add');
 const coursesRoutes = require('./routes/courses');
 const cartRoutes = require('./routes/cart');
+const path = require('path');
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.engine(
 );
 app.set('view engine', 'hbs');
 app.set('views');
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', homeRoutes);

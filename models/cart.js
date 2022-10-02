@@ -11,8 +11,8 @@ class Cart {
   static async add(course) {
     const cart = await Cart.fetch();
 
-    const idx = card.courses.findIndex((c) => c.id === course.id);
-    const candidate = card.courses[idx];
+    const idx = cart.courses.findIndex((c) => c.id === course.id);
+    const candidate = cart.courses[idx];
 
     if (candidate) {
       candidate.count++;
@@ -30,6 +30,28 @@ class Cart {
           reject(err);
         } else {
           resolve();
+        }
+      });
+    });
+  }
+
+  static async remove(id) {
+    const cart = await Cart.fetch();
+    const idx = cart.courses.findIndex((c) => c.id === id);
+    const course = cart.courses[idx];
+
+    if (course.count === 1) {
+      cart.courses = cart.courses.filter((c) => c.id !== id);
+    } else {
+      cart.courses[idx].count--;
+    }
+    cart.price -= course.price;
+    return new Promise((resolve, reject) => {
+      fs.writeFile(p, JSON.stringify(cart), (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(cart);
         }
       });
     });
