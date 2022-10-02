@@ -4,10 +4,13 @@ const Course = require('../models/course');
 
 const router = Router();
 router.get('/', async (req, res) => {
+  const cart = await Cart.fetch();
+
   res.render('cart', {
     title: 'Cart',
     isCart: true,
-    // cart,
+    courses: cart.courses,
+    price: cart.price,
   });
 });
 router.post('/add', async (req, res) => {

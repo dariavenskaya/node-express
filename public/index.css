@@ -18,9 +18,3 @@
   align-items: center;
   justify-content: space-between;
 }
-.btn-primary {
-  background-color: #472743;
-}
-.btn-primary:hover {
-  background-color: #71426b;
-}
